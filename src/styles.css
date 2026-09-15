@@ -830,14 +830,16 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0) drop-shadow(0 0 0 var(--accent));
-  transition: filter 0.7s ease, transform 0.7s ease;
+  /* Extreme blurred close-up: the avatars are JPEGs with backgrounds, so a true silhouette would be a black disc. */
+  filter: blur(9px) saturate(1.8) hue-rotate(var(--hue-shift, 90deg));
+  transform: scale(2.6);
+  transition: filter 0.8s ease, transform 0.8s cubic-bezier(0.2, 1.2, 0.3, 1);
   user-select: none;
 }
 
 .silhouette--revealed img {
   filter: none;
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
 .options {
