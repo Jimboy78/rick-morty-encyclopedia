@@ -5,6 +5,7 @@ import Characters from "./components/Characters";
 import CharacterCard from "./components/CharacterCard";
 import CharacterModal from "./components/CharacterModal";
 import PortalGun from "./components/PortalGun";
+import Cable from "./components/Cable";
 import WhoGame from "./components/WhoGame";
 import Episodes from "./components/Episodes";
 import Locations from "./components/Locations";
@@ -14,6 +15,7 @@ import type { Character } from "./services/api";
 const TABS = [
   { id: "characters", label: "Characters", icon: "🧬" },
   { id: "portal", label: "Portal Gun", icon: "🌀" },
+  { id: "cable", label: "Cable", icon: "📡" },
   { id: "game", label: "Who's That?", icon: "🎯" },
   { id: "episodes", label: "Episodes", icon: "📺" },
   { id: "locations", label: "Locations", icon: "🪐" },
@@ -106,6 +108,7 @@ export default function App() {
         <main key={tab} className="view">
           {tab === "characters" && <Characters favorites={favorites} onOpen={setSelected} />}
           {tab === "portal" && <PortalGun favorites={favorites} onOpen={setSelected} />}
+          {tab === "cable" && <Cable favorites={favorites} onOpen={setSelected} />}
           {tab === "game" && <WhoGame />}
           {tab === "episodes" && <Episodes />}
           {tab === "locations" && <Locations onOpen={setSelected} />}
