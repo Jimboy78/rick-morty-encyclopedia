@@ -9,6 +9,7 @@ import Cable from "./components/Cable";
 import WhoGame from "./components/WhoGame";
 import Episodes from "./components/Episodes";
 import Locations from "./components/Locations";
+import Atlas from "./components/Atlas";
 import { useFavorites } from "./hooks/useFavorites";
 import type { Character } from "./services/api";
 
@@ -18,6 +19,7 @@ const TABS = [
   { id: "cable", label: "Cable", icon: "📡" },
   { id: "game", label: "Who's That?", icon: "🎯" },
   { id: "episodes", label: "Episodes", icon: "📺" },
+  { id: "atlas", label: "Atlas", icon: "🌌" },
   { id: "locations", label: "Locations", icon: "🪐" },
   { id: "collection", label: "Collection", icon: "★" },
 ] as const;
@@ -111,6 +113,7 @@ export default function App() {
           {tab === "cable" && <Cable favorites={favorites} onOpen={setSelected} />}
           {tab === "game" && <WhoGame />}
           {tab === "episodes" && <Episodes />}
+          {tab === "atlas" && <Atlas onOpen={setSelected} />}
           {tab === "locations" && <Locations onOpen={setSelected} />}
           {tab === "collection" &&
             (favorites.favorites.length === 0 ? (

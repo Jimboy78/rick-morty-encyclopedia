@@ -106,6 +106,14 @@ export async function fetchAllEpisodes(): Promise<Episode[]> {
   return [first, ...rest].flatMap((p) => p.results);
 }
 
+export async function fetchAllLocations(): Promise<Location[]> {
+  const first = await get<Page<Location>>("/location");
+  const rest = await Promise.all(
+    Array.from({ length: first.info.pages - 1 }, (_, i) => get<Page<Location>>(`/location?page=${i + 2}`))
+  );
+  return [first, ...rest].flatMap((p) => p.results);
+}
+
 export async function fetchLocations(page: number, name: string): Promise<Page<Location>> {
   try {
     return await get<Page<Location>>(`/location?${query({ page, name })}`);
